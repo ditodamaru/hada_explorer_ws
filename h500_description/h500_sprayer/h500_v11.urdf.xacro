@@ -3,9 +3,9 @@
 
   <xacro:property name="M_PI" value="3.14159274"/>
 
-  <xacro:include filename="$(find h500_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find h500_description)/urdf/suspension/suspension.urdf.xacro"/>
-  <xacro:include filename="$(find h500_description)/urdf/wheel/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find h500_description)/urdf/v11_stl/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find h500_description)/urdf/v11_stl/suspension/suspension.urdf.xacro"/>
+  <xacro:include filename="$(find h500_description)/urdf/v11_stl/wheel/wheel.urdf.xacro"/>
 
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
