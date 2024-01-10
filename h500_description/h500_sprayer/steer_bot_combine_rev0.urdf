@@ -86,7 +86,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.02" radius="0.05"/> 
+        <cylinder length="0.02" radius="0.05"/>
       </geometry>
       <material name="yellow"/>
     </visual>
@@ -105,7 +105,7 @@
   <joint name="front_steer_joint" type="revolute">
     <parent link="base_link"/>
     <child link="front_steer_link"/>
-    <origin rpy="0 0 0" xyz="0.2 0 0.12"/> <!-- xyz="0.2 0 0.12 -->
+    <origin rpy="0 0 0" xyz="0.2 0 0.12"/>
     <axis xyz="0 0 1"/>
     <limit effort="10.0" lower="-3.14159265359" upper="3.14159265359" velocity="5.0"/>
   </joint>
