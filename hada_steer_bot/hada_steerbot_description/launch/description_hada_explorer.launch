@@ -4,4 +4,4 @@
     <arg name="model" default="$(find h500_description)/h500_sprayer/hada_robot_dae_sim.urdf.xacro"/>
 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-</launch>
+</launch>;

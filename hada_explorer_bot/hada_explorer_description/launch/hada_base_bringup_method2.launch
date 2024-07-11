@@ -1,0 +1,41 @@
+
+<launch>
+
+  <arg name="visualize" default="true" />
+  <!-- <arg name="model" default="$(find bunker_explorer_description)/urdf/REV3_bunker_realsense.urdf.xacro"/> -->
+  <!--<arg name="model" default="$(find hada_explorer_description)/urdf/h500_realsense.urdf.xacro"/> -->
+  <!-- <arg name="model" default="$(find bunker_explorer_description)/urdf/bunker_explorer_description.urdf.xacro"/> -->
+  <arg name="rvizconfig" default="$(find hada_explorer_description)/rviz/hada_mapping.rviz" />
+
+
+  <!-- for HADA_robot-->
+  <arg name="model" default="$(find h500_description)/h500_sprayer/h500_ori_base_link_d435i_base_footprint.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />    
+
+	<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_map_odom" args="0.0 0.0 0.0 0.0 0.0 0.0 map odom" /> -->
+	<node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_base_imu" args="-0.1 0.0 0.5 0.0 0.0 0.0 base_link imu_link"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_base_gps" args="-0.1 0.0 1.3 0.0 0.0 0.0 base_link gps" />
+	<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_world_map" args="0.0 0.0 0.0 0.0 0.0 0.0 world map" /> -->
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_base_basefootprint" args="0.0 0.0 -0.15 0.0 0.0 0.0 base_link base_footprint" /> -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_camera_base" args="0.0 0.0 0.1 0.0 0.0 0.0 d435i_camera_link camera_link" />
+  
+ <!-- 
+  <param name="robot_description" command="cat $(find hada_explorer_description)/urdf/h500_realsense.urdf" />  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> 
+  -->
+
+  <!--
+  <param name="robot_description" command="cat $(arg model)" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
+    <rosparam param="source_list">["joint_states_ct"]</rosparam>
+  </node> -->
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+
+</launch>
